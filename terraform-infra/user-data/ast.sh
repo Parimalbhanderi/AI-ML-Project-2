@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 apt update -y
 apt install -y git curl
 
@@ -15,8 +17,12 @@ cd coderat-ast
 
 npm install
 
-pm2 start ast.js --name coderat-ast
+export HOME=/home/ubuntu
+sudo -u ubuntu pm2 start ast.js --name coderat-ast
 
-pm2 save
+sudo -u ubuntu pm2 save
 
-pm2 startup systemd -u ubuntu --hp /home/ubuntu
+sudo -u ubuntu pm2 startup systemd -u ubuntu --hp /home/ubuntu | tail -1 | bash
+
+systemctl enable pm2-ubuntu
+systemctl start pm2-ubuntu
