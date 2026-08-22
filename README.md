@@ -11,6 +11,8 @@ AICodeReview is a developer-focused web application that automates repository an
 - Subscription billing and checkout flows via Stripe.
 - Background processing and event orchestration using Inngest.
 
+
+
 ## High-level architecture
 
 - Frontend: Next.js (app router) — UI, public pages, and protected dashboard under `app/`.
@@ -41,6 +43,30 @@ AICodeReview is a developer-focused web application that automates repository an
 - Review & repository domain logic: `module/review/`, `module/repository/`
 - Database schema & migrations: `prisma/schema.prisma` and `prisma/migrations/`
 - Server utilities and integrations: `lib/` (e.g., `lib/db.ts`, `lib/stripe.ts`, `lib/auth.ts`)
+
+##AI & RAG Pipeline
+
+Repository Code
+      ↓
+Code Extraction
+      ↓
+Chunking
+      ↓
+Embedding Generation
+      ↓
+Pinecone Vector Storage
+      ↓
+User Query / Review Request
+      ↓
+Semantic Similarity Search
+      ↓
+Relevant Code Context
+      ↓
+Prompt Construction
+      ↓
+LLM
+      ↓
+Context-Aware Review
 
 ## Getting started (local development)
 
